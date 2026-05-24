@@ -4,10 +4,7 @@ Webapp moderne et interactive pour une agence de voyage temporel fictive, permet
 
 ## 👥 Équipe
 
-- [Nom Prénom 1]
-- [Nom Prénom 2]
-- [Nom Prénom 3]
-- [Nom Prénom 4]
+- Helina Sahle
 
 ## 🛠️ Stack Technique
 
@@ -83,7 +80,7 @@ Le chatbot utilise un system prompt strict qui :
 
 ```bash
 # Cloner le projet
-git clone [URL_DU_REPO]
+git clone https://github.com/gansabi/timetravel-agency.git
 cd timetravel-agency
 
 # Installer les dépendances
