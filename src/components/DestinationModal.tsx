@@ -19,7 +19,7 @@ interface Props {
   onClose: () => void
 }
 
-const details: Record<number, { longDescription: string; includes: string[]; duration: string; groupSize: string }> = {
+const details: Record<number, { longDescription: string; includes: string[]; duration: string; groupSize: string; gallery: string[]; video: string }> = {
   1: {
     longDescription:
       "Plongez au cœur de la Belle Époque parisienne ! Assistez à l'inauguration de la Tour Eiffel lors de l'Exposition Universelle de 1889, flânez dans les cafés de Montmartre aux côtés des impressionnistes, et découvrez un Paris en pleine effervescence culturelle et technologique. Votre guide personnel vous fera vivre les moments les plus marquants de cette époque dorée.",
@@ -33,6 +33,8 @@ const details: Record<number, { longDescription: string; includes: string[]; dur
     ],
     duration: '5 jours / 4 nuits',
     groupSize: '2 à 6 personnes',
+    gallery: ['/images/paris-story.jpeg'],
+    video: '/videos/paris.mp4',
   },
   2: {
     longDescription:
@@ -47,6 +49,8 @@ const details: Record<number, { longDescription: string; includes: string[]; dur
     ],
     duration: '3 jours / 2 nuits',
     groupSize: '2 à 4 personnes',
+    gallery: ['/images/cretace-2.jpeg', '/images/cretace-story.jpeg', '/images/cretace-story2.jpeg'],
+    video: '/videos/cretace.mp4',
   },
   3: {
     longDescription:
@@ -61,6 +65,8 @@ const details: Record<number, { longDescription: string; includes: string[]; dur
     ],
     duration: '6 jours / 5 nuits',
     groupSize: '2 à 8 personnes',
+    gallery: ['/images/florence-story.jpeg'],
+    video: '/videos/florence.mp4',
   },
 }
 
@@ -128,6 +134,36 @@ export default function DestinationModal({ destination, onClose }: Props) {
 
             {/* Description */}
             <p className="text-white/70 leading-relaxed">{detail.longDescription}</p>
+
+            {/* Galerie photos */}
+            {detail.gallery.length > 1 && (
+            <div>
+              <h3 className="font-semibold text-white mb-3">📸 Galerie</h3>
+              <div className="grid grid-cols-3 gap-2">
+                {detail.gallery.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt={`${destination.title} - photo ${i + 1}`}
+                    className="w-full h-48 object-cover rounded-lg hover:opacity-80 transition-opacity cursor-pointer"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
+            )}
+
+            {/* Vidéo */}
+            <div>
+              <h3 className="font-semibold text-white mb-3">🎬 Aperçu vidéo</h3>
+              <video
+                controls
+                className="w-full rounded-lg border border-white/10"
+                poster={destination.image}
+              >
+                <source src={detail.video} type="video/mp4" />
+              </video>
+            </div>
 
             {/* Highlights */}
             <div>
